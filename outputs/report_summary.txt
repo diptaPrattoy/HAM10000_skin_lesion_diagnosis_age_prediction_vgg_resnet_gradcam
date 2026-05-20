@@ -1,0 +1,30 @@
+
+Dataset:
+The Skin Cancer MNIST: HAM10000 dataset was used. A stratified subset of 5000 dermatoscopic images was selected.
+
+Classification task:
+The classification task predicts the skin lesion diagnosis class from the image.
+The categorical classes are: ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc'].
+
+Regression task:
+The regression task predicts patient age from the dermatoscopic image.
+Age is a continuous numeric metadata value.
+
+Models:
+Four PyTorch models were trained:
+1. VGG16 for lesion diagnosis classification
+2. VGG16 for age regression
+3. ResNet50 for lesion diagnosis classification
+4. ResNet50 for age regression
+
+Training protocol:
+Images were resized to 224x224.
+Data augmentation was applied to training images.
+ImageNet pretrained weights were used when internet was available.
+First, the backbone was frozen and only the task-specific head was trained.
+Then, the final convolutional block was fine-tuned.
+
+Evaluation:
+Classification models were evaluated using accuracy, weighted F1-score, confusion matrix, and classification report.
+Regression models were evaluated using MSE, MAE, RMSE, and R2 score.
+Grad-CAM was used to visualize important regions for all four trained models.
